@@ -3,14 +3,14 @@ import re
 import json
 from dotenv import load_dotenv
 from atproto import Client
-from google import genai
+from anthropic import Anthropic
 from pymongo import MongoClient
 from bson import json_util
-
-load_dotenv()#Cargamos las variables de entorno desde el .env
+#Cargamos las variables de entorno desde el .env
+load_dotenv()
 BSKY_IDENTIFIER = os.getenv('BSKY_IDENTIFIER')
 BSKY_PASSWORD = os.getenv('BSKY_PASSWORD')
-GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+ANTHROPIC_API_KEY = os.getenv('ANTHROPIC_API_KEY')
 MONGO_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017/')
 
 def limpiar_texto(texto):
@@ -18,7 +18,7 @@ def limpiar_texto(texto):
     return texto.strip()
 
 def main():
-    if not all([BSKY_IDENTIFIER, BSKY_PASSWORD, GEMINI_API_KEY]):
+    if not all([BSKY_IDENTIFIER, BSKY_PASSWORD, ANTHROPIC_API_KEY]):
         print("ERROR: Pueden faltar credenciales en el archivo .env")
         return
 
@@ -50,21 +50,24 @@ def main():
     }
     doc_id = coleccion.insert_one(documento).inserted_id
 
-    # 3. Análisis con Gemini
-    print("Enviandole el prompt a Gemini")
-    gemini_client = genai.Client(api_key=GEMINI_API_KEY)
+    # 3. Análisis con Claude
+    print("Enviándole el prompt a Claude")
+    claude_client = Anthropic(api_key=ANTHROPIC_API_KEY)
     
-    contexto = f"Actúa como el mejor analista de redes sociales en Bluesky. Analiza estos recientes posts del usuario '{actor_a_analizar}' en Bluesky.\n\n"
+    contexto = f"Actúa como el mejor analista de redes sociales. Analiza estos recientes posts del usuario '{actor_a_analizar}' en Bluesky.\n\n"
     feed_str = "\n".join([f"- {t}" for t in textos_feed])
     instrucciones = "\n\nAnaliza el tono, los temas principales y elabora un breve perfil de intereses en formato Markdown."
     
     prompt = contexto + "POSTS:\n" + feed_str + instrucciones
     
-    response = gemini_client.models.generate_content(
-        model="gemini-3.8-flash", 
-        contents=prompt
+    response = claude_client.messages.create(
+        model="claude-haiku-4-5-20251001", # Haiku es muy rápido y consume poquísimo saldo
+        max_tokens=1500,
+        messages=[
+            {"role": "user", "content": prompt}
+        ]
     )
-    respuesta_llm = response.text
+    respuesta_llm = response.content[0].text
     
     # 4. Actualización en MongoDB y volcado a archivos
     coleccion.update_one({"_id": doc_id}, {"$set": {"analisis_llm": respuesta_llm}})

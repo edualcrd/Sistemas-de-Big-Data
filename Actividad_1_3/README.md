@@ -1,12 +1,12 @@
 # Análisis de Perfiles en Bluesky mediante IA y NoSQL
 
-Este proyecto automatiza la extracción de datos no estructurados de perfiles en la red social Bluesky, los almacena de forma estructurada en MongoDB y genera perfiles de intereses automatizados utilizando la inteligencia artificial generativa de Google Gemini.
+Este proyecto automatiza la extracción de datos no estructurados de perfiles en la red social Bluesky, los almacena de forma estructurada en MongoDB y genera perfiles de intereses automatizados utilizando la inteligencia artificial generativa de Anthropic.
 
 ## Características Principales (Features)
 - **Extracción de datos:** Conexión con el AT Protocol (Bluesky) para obtener el timeline de cualquier cuenta.
 - **Limpieza de datos:** Filtrado de URLs y caracteres extraños de los posts extraídos.
 - **Persistencia NoSQL:** Almacenamiento tanto de los datos en bruto como de los procesados en una base de datos MongoDB.
-- **Análisis con LLM:** Generación de un perfil psicológico/intereses a partir de los textos utilizando Google Gemini API.
+- **Análisis con LLM:** Generación de un perfil psicológico/intereses a partir de los textos utilizando Anthropic API.
 - **Exportación:** Generación automática de reportes en `.txt` y exportación de la base de datos en `.json`.
 
 ## Tecnologías Utilizadas
@@ -15,14 +15,14 @@ Este proyecto automatiza la extracción de datos no estructurados de perfiles en
 - **Base de Datos:** MongoDB (Local o Atlas)
 - **SDKs y APIs:** 
   - `@atproto` (Bluesky SDK)
-  - `google-genai` (Gemini API)
+  - `anthropic` (Claude API)
 
 ## Requisitos Previos
 - Instalar **Python 3.10** o superior.
 - Instalar el gestor de paquetes **`uv`**.
 - Tener un servidor de **MongoDB** ejecutándose en local (puerto 27017) o una conexión válida a MongoDB Atlas.
 - Disponer de una cuenta en **Bluesky** para generar una contraseña de aplicación.
-- Tener una **API Key** válida de Google Gemini (Google AI Studio).
+- Tener una **API Key** válida de Claude (Claude Console).
 
 ## Instalación y Configuración
 El proyecto hace uso de un entorno virtual gestionado con `uv` que está ubicado en el directorio padre del proyecto.
@@ -45,9 +45,9 @@ El proyecto hace uso de un entorno virtual gestionado con `uv` que está ubicado
 4. **Configurar las variables de entorno:**
    Crea un archivo `.env` en la raíz de la carpeta `Actividad_1_3` con el siguiente contenido:
    ```env
-   BSKY_IDENTIFIER=tu_usuario.bsky.social
+   BSKY_IDENTIFIER=tu_usuario.bsky.social (o correo)
    BSKY_PASSWORD=tu-contraseña-de-app-bluesky
-   GEMINI_API_KEY=tu-api-key-de-gemini
+   ANTHROPIC_API_KEY=sk-ant-usr-1He...wAA
    MONGO_URI=mongodb://localhost:27017/
    ```
 
@@ -57,7 +57,6 @@ Para ejecutar el análisis, asegúrate de tener el entorno activado y ejecuta el
 ```bash
 python 1_3_Alcaide_Rodríguez_Eduardo.py
 ```
-*Nota: Si se produce un error `503 UNAVAILABLE` por parte de Gemini, espera un par de minutos y vuelve a ejecutar el comando, ya que se debe a saturación temporal de los servidores de Google.*
 
 Tras una ejecución exitosa, se generarán automáticamente dos archivos en la carpeta:
 - `1_3_Alcaide_Rodríguez_Eduardo.txt`: Con el análisis devuelto por el LLM.

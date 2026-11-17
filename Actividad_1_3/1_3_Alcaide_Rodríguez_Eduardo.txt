@@ -1,0 +1,69 @@
+# Análisis de Perfil: midu.dev en Bluesky
+
+## 📊 Tono General
+**Entusiasta, divulgador técnico, crítico constructivo**
+- Exclamaciones frecuentes que denotan genuina emoción
+- Lenguaje accesible sin perder rigor técnico
+- Mezcla humor con análisis serio (especialmente en temas controversiales)
+- Tono de "descubridor": comparte herramientas como quien encuentra tesoros
+
+---
+
+## 🎯 Temas Principales
+
+### 1. **Código Abierto & Herramientas Developer** ⭐⭐⭐⭐⭐
+- Obsesionado con alternativas open source
+- Particularmente: Docker alternativas (Koda), mapas, emuladores (AWS)
+- Valora la accesibilidad (gratuito, multiplataforma, en español)
+
+### 2. **IA y Generación de Contenido** ⭐⭐⭐⭐
+- Experimenta activamente con Claude, ChatGPT
+- Interesado en integración IA en workflows (código, diseño, video)
+- Seguidor de Anthropic vs Google/Apple dynamics
+
+### 3. **Noticias Tech & Controversias** ⭐⭐⭐
+- Cobertura de conflictos legales (patentes, Synaptics vs Linux)
+- Chismes corporativos (dramáticamente presentados: Jensen Huang)
+- Crítica a dinámicas de poder empresarial
+
+### 4. **Desarrollo Web Moderno** ⭐⭐⭐⭐
+- Scroll animations en CSS
+- React 19, componentes de Meta
+- Prácticas y standards actuales
+
+### 5. **Experiencia UX/Developer Experience** ⭐⭐⭐
+- Obsesión con interfaces visuales agradables
+- Eficiencia en prompts y herramientas
+- Calidad de vida del dev
+
+---
+
+## 👤 Perfil de Intereses
+
+```markdown
+PILARES:
+├─ 🔓 Open Source Advocate
+├─ 🤖 IA Early Adopter
+├─ 📱 Web Dev Modernista
+├─ 🛡️ Tech Privacy/Freedom Defender
+└─ 🎉 Community Sharer
+
+CARACTERÍSTICAS:
+• Content curator de tecnología (no creator original exclusivamente)
+• Español nativo, audiencia hispana como foco
+• Pragmático: "¿es open source, multiplataforma y free?" ✅
+• Influenciador de opinión en ecosistema dev hispanohablante
+• Crítico con megacorps cuando abusan de poder
+```
+
+---
+
+## 🚨 Particularidades
+- **Consistencia temática**: 80% posts técnicos positivos, 20% controversias
+- **Timing**: Patrón de viralización (noticias breaking)
+- **Lenguaje**: Casual, con expresiones como "¡Bombazo!", "¡De locos!" que generan engagement
+- **Red flag importante**: Publicó información no verificada sobre Jensen Huang (rumores de infidelidad) → credibilidad moderada en gossip corporativo
+
+---
+
+**Conclusión**: Es un **evangelista tech hispanohablante** que combina educación con entretenimiento, con sesgo claro hacia lo *open, libre y accesible*.

@@ -1,0 +1,4 @@
+atproto
+anthropic
+pymongo
+python-dotenv
